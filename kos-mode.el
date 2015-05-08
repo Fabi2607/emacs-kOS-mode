@@ -62,10 +62,10 @@
            '("\\b[-+]?[0-9]+\.[0-9]*\([eE][-+]?[0-9]+\)?\\b" . font-lock-preprocessor-face) ;; floating point literals
            )
           )
-  "Additional Keywords to highlight in kOS mode")
+  "Additional Keywords to highlight in kOS (KerbalScript) mode")
 
 (defvar kos-font-lock-keywords kos-font-lock-keywords-2
-  "Default highlighting expressions for kOS mode")
+  "Default highlighting expressions for kOS (KerbalScript) mode")
 
 (defvar kos-mode-syntax-table
   (let ((st (make-syntax-table)))
@@ -75,16 +75,19 @@
     st)
   "Syntax table for kos-mode")
 
-(defun kos-mode ()
-  "Major mode for editing KerbalScript Files"
-  (interactive)
-  (kill-all-local-variables)
-  (set-syntax-table kos-mode-syntax-table)
+(define-derived-mode kos-mode prog-mode "KerboScript"
+  "Major mode for editing KerboScript Files"
+  :syntax-table kos-mode-syntax-table
   (use-local-map kos-mode-map)
-  (set (make-local-variable 'font-lock-defaults) '(kos-font-lock-keywords))
-  (setq major-mode 'kos-mode)
-  (setq mode-name "kOS")
-  (run-hooks 'kos-mode-hook))
+  ;; set syntax highlighting
+  (set (make-local-variable 'font-lock-defaults) '(kos-font-lock-keywords nil t))
+  ;; this should be case insensitive
+  (set (make-local-variable 'font-lock-keywords-case-fold-search) t)
+  (setq comment-start "// ")
+  (setq comment-end "")
+  (run-hooks 'kos-mode-hook)
+  )
 
 (provide 'kos-mode)
+
 ;;; kos-mode.el ends here
