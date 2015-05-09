@@ -1,13 +1,12 @@
 ;;; kos-mode.el --- Summary
 ;; Copyright (C) 2015  Fabian Kantereit
-;; Author: Fabian Kantereit <fkantere@E6530-FKANTERE.INFORM-AC>
-;; Keywords:
+;; Author: Fabian Kantereit
+;; Keywords: kOS, KerboScript, KSP, Kerbal SpaceProgram
 ;;; Commentary:
 ;;
 ;;
 ;;; Code:
 
-;; (require 'regexp-opt)
 ;;;;;;;;;;;;;;;
 ;; Mode hook ;;
 ;;;;;;;;;;;;;;;
@@ -62,10 +61,10 @@
            '("\\b[-+]?[0-9]+\.[0-9]*\([eE][-+]?[0-9]+\)?\\b" . font-lock-preprocessor-face) ;; floating point literals
            )
           )
-  "Additional Keywords to highlight in kOS (KerbalScript) mode")
+  "Additional Keywords to highlight in kOS (KerboScript) mode")
 
 (defvar kos-font-lock-keywords kos-font-lock-keywords-2
-  "Default highlighting expressions for kOS (KerbalScript) mode")
+  "Default highlighting expressions for kOS (KerboScript) mode")
 
 (defvar kos-mode-syntax-table
   (let ((st (make-syntax-table)))
